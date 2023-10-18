@@ -1,17 +1,15 @@
 ---
-title: My Site
+title: WhyPhi's Documentation Portal
 toc: false
 ---
 
-This is the landing page.
 
 ## Explore
 
 {{< cards >}}
   {{< card link="docs" title="Docs" icon="book-open" >}}
-  {{< card link="about" title="About" icon="user" >}}
 {{< /cards >}}
 
 ## Documentation
 
-For more information, visit [Hextra](https://imfing.github.io/hextra).
+For more information on how to modify this site, visit [Hextra](https://imfing.github.io/hextra).

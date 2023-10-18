@@ -1,18 +1,14 @@
 ---
 title: Documentation
-next: first-page
+next: Zap
 ---
 
-This is a demo of the theme's documentation layout.
+This page contains all the necessary documetation for API endpoints utilized by Zap and Portal.
 
-## Hello, World!
+## Zap
 
-```go {filename="main.go"}
-package main
+WhyPhi's Serverless Backend.
 
-import "fmt"
+## Portal
 
-func main() {
-    fmt.Println("Hello, World!")
-}
-```
+WhyPhi's Client (Frontend).
