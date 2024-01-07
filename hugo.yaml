@@ -25,7 +25,7 @@ menu:
       pageRef: /workflow
       weight: 2
     - name: Onboarding
-      url: "/onboarding"
+      pageRef: "/onboarding"
       weight: 3
     - name: Search
       weight: 4
