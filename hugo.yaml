@@ -24,9 +24,9 @@ menu:
     - name: Workflow
       pageRef: /workflow
       weight: 2
-    # - name: Contact ↗
-    #   url: "https://github.com/imfing"
-    #   weight: 3
+    - name: Onboarding
+      url: "/onboarding"
+      weight: 3
     - name: Search
       weight: 4
       params:
