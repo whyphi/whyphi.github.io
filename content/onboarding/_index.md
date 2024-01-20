@@ -16,6 +16,26 @@ Install pipenv to your machine by using: `pip install --user pipenv` or by follo
 
 Zap utilizes many AWS services. To get started with AWS, ensure that you have the [AWS CLI](https://aws.amazon.com/cli/) installed. Then, set the necessary AWS configuration within your system using: `aws configure`. Receive the necessary AWS credentials from another member in the PCT Tech Team.
 
+{{% details title="Don't remember how to find our AWS credentials?" closed="true" %}}
+
+On your command line, type and enter `cat ~/.aws/credentials`. Double check that the access key is same as the one in our [AWS Console](https://us-east-1.console.aws.amazon.com/iam/home#/security_credentials).
+
+If the keys are the same, proceed to share both the AWS Access Key and Secret Keys to the onboarding member.
+
+**NOTE: Please do not share your personal keys to anybody else.**
+
+{{% /details %}}
+
+This is how your `aws configure` should look like:
+``` {filename="aws configure"}
+
+
+AWS Access Key ID [********************]: {AWS Access Key}
+AWS Secret Access Key [********************]: {AWS Secret Access Key}
+Default region name [us-east-1]: us-east-1
+Default output format [json]: json
+```
+
 ### Local Development
 
 To turn on the virtual environment using `pipenv`:
