@@ -10,6 +10,7 @@ toc: false
   {{< card link="onboarding" title="Onboarding" icon="book-open" >}}
   {{< card link="docs" title="Docs" icon="book-open" >}}
   {{< card link="workflow" title="Workflow" icon="book-open" >}}
+  {{< card link="blog" title="Blog" icon="book-open" >}}
 {{< /cards >}}
 
 ## Documentation

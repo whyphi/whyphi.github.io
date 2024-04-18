@@ -27,12 +27,15 @@ menu:
     - name: Onboarding
       pageRef: "/onboarding"
       weight: 3
-    - name: Search
+    - name: Blog
+      pageRef: "/blog"
       weight: 4
+    - name: Search
+      weight: 5
       params:
         type: search
     - name: GitHub
-      weight: 5
+      weight: 6
       url: "https://github.com/whyphi"
       params:
         icon: github

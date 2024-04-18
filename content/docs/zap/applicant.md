@@ -5,13 +5,16 @@ next: docs/zap/listings
 prev: docs/zap/
 ---
 
-WORK IN PROGRESS
-
 ## `/applicant/{id}`
 
 ### `GET`
 
 Retrieves an applicant with given `id`.
+
+#### Authentication
+
+- `MEMBER`
+- `ADMIN`
 
 
 #### Parameters
@@ -93,6 +96,12 @@ curl https://<api_link>/api/applicants/<applicant_id>
 ### `GET`
 
 Retrieves all applicant withing a given `listing_id`.
+
+#### Authentication
+
+- `MEMBER`
+- `ADMIN`
+
 
 #### Parameters
 
