@@ -92,9 +92,9 @@ const handleUserOnboarding = async () => {
 }
 ```
 
-`update()` is a [method](https://next-auth.js.org/getting-started/client#updating-the-session) of the `useSession` hook from nextAuth. So the logic behind this function is that after submitting a user's information, the `update()` method would get the clear the user's current state, and then fetch the user's new token with the `isNewUser` flag set to false. With that new session and flag set, ideally, the user should not be redirected to the onboarding page.
+`update()` is a [method](https://next-auth.js.org/getting-started/client#updating-the-session) of the `useSession` hook from nextAuth. So the logic behind this function is that after submitting a user's information, the `update()` method would the clear the user's current state, and then fetch the user's new token with the `isNewUser` flag set to false. With that new session and flag set, ideally, the user should not be redirected to the onboarding page.
 
-In the local environment, the functionality above worked without any issues as mentioned previously. However, loading time in the local environment tends to be much faster since there's less overall network I/Os. In the local environment, before `router.push("/admin")` gets executed, `update()` set the new session on the client-side. 
+In the local environment, the functionality above worked without any issues as mentioned previously. However, loading time in the local environment tends to be much faster since there's less overall network I/Os. In the local environment, before `router.push("/admin")` gets executed, `update()` sets the new session on the client-side. 
 
 As Javascript is asynchronous, it's possible that before `update()` finishes, `router.push("/admin")` can get executed, meaning that the user could get redirected before the session updates on the client-side. This case happened for the staging and production environment as there could be more background network I/Os happening, allowing update() to be much slower. After deep-diving into how the `update()`method works, I was able to find out that this method is an asynchronous method as well so adding an `await` keyword would fix this [issue](https://github.com/whyphi/portal/pull/117).
 
