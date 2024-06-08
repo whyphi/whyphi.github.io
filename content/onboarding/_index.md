@@ -127,8 +127,6 @@ applicant_service = ApplicantService()
 
 #### `chalicelib/modules`
 
-**CURRENTLY BUILDING / NOT IMPLEMENTED**
-
 For Whyphi, we take advantage of a lot of microservices and cloud applications. This means that we need different functionalities for each service to handle the data and/or logic. Thus, for each microservice or application, we would create a file and put them in `modules.`
 
 For example, in Whyphi, we use MongoDB and AWS S3. Each microservice would have its own file with specific functionalities that we would use. For those services, we would create the following files:
@@ -167,6 +165,34 @@ To view the code coverage report, open `htmlcov/index.html` and it will give a s
 The green lines indicate that the unit tests hit these lines, where as the red lines mean the opposite. For this example, we can see that the else case and the exception case on `delete_item` was not tested in the `db.py` file:
 
   <img src="./coverage_eg.png" width="600">
+
+### Setting Environment Variables in Chalice
+
+Setting up environment variables are a little bit more complicated in Chalice. However, it is crucial to understand and know how to implement them as we work with sensitive credentials from other external services.
+
+Currently, our local backend is configured to utilize AWS services on a development environment/service. This means local environment variables are technically hosted on the cloud as well.
+
+#### Creating an Environment Variable
+
+First, navigate to **AWS Systems Manager**. Then, navigate to **Parameter Store** on the sidebar under Application Management:
+
+<img src="./paramstore_sidebar.png" width="300">
+
+Then, click **Create parameter** to create an environment variable:
+
+<img src="./paramstore_create.png" width="500">
+
+Fill out all the necessary details for your environment variable (try your best to keep the name formatting relevant and consistent):
+
+<img src="./paramstore_details.png" width="500">
+
+Click **Create parameter**.
+
+#### Providing Environment Variable Access for Chalice
+
+To use AWS services on chalice, the necessary permissions need to be provided or else AWS denies the specific resource when requested. Param Store environment variables are considered as a resource and we need to specify that our application should have access to request it.
+
+On Zap's directory, navigate to `.chalice`. Inside it, you will see both `policy-dev.json` and `policy-prod.json`. Inside both json files, navigate to `"Resource"` and add your new parameter to the respective files. Your Chalice application should now have access to request the new environment variables you created.
 
 ## Portal
 
