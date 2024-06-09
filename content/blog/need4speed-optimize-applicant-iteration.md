@@ -1,5 +1,5 @@
 ---
-title: Need4Speed - Optimizing Applicant Iteration Logic
+title: Need4Speed - Optimizing Applicant Iteration
 date: 2024-06-08
 authors:
   - name: William De Rocco
