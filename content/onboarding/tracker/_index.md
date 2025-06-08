@@ -19,10 +19,10 @@ All progress will be located on issues: https://github.com/whyphi/tracker/issues
 If you are currently working on a feature, copy and paste the link to your Pull Request next to the checkbox:
 
 1. Click on `Edit`
-   <img src="./tracker_edit.png" width="450">
+   <img src="/images/tracker/tracker_edit.png" width="450">
 
 2. Copy and paste your pull request URL next to the checkbox for the corresponding feature
-   <img src="./tracker_pr_link.png" width="450">
+   <img src="/images/tracker/tracker_pr_link.png" width="450">
 
 3. Click the `Update comment` button
 

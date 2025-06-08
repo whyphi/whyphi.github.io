@@ -86,7 +86,7 @@ The safest way to shut down the database is by running `supabase stop`. However,
 
 If you do chose the "quitting Docker Desktop" approach, just make sure you fully quit the application (see screenshot below) or your CPU will hate you 😡.
 
-<img src="./quit_docker_desktop.png" width="300">
+<img src="/images/zap/quit_docker_desktop.png" width="300">
 
 {{% /details %}}
 
@@ -138,10 +138,10 @@ Within the `chalicelib` directory, many directories exist. Let's now see the pur
 This is where all API endpoints are created in our backend application. We leverage [blueprints](https://aws.github.io/chalice/topics/blueprints.html) to organize our application into logical components.
 
 To create your own blueprint and API endpoints, create a new file in api, intialize a new blueprint object, and create your endpoints:
-<img src="./new_api.png" width="600">
+<img src="/images/zap/new_api.png" width="600">
 
 To ensure that your API gets registered to the chalice application, go to `app.py`, import the blueprint and register it on `app` object:
-<img src="./register_api.png" width="600">
+<img src="/images/zap/register_api.png" width="600">
 
 #### `chalicelib/models`
 
@@ -152,7 +152,7 @@ If there is a need to create new data types for new features, initialize a new m
 #### `chalicelib/services`
 
 For Zap, we attempt to use a layered architecture. The general schema of layers on a backend application is shown below:
-<img src="./layer_schema.jpeg" width="450">
+<img src="/images/zap/layer_schema.jpeg" width="450">
 
 The `services` directory acts as the service layer for Whyphi, in which it contains business logic and handles data manipulations. "Generally services contain information that is related to their domain.
 
@@ -209,7 +209,7 @@ To create a test, create a function with the prefix name `test_`, and proceed wi
 
 To run the unit test, run the `pytest` command and it will show if you passed or failed any tests.
 
-  <img src="./unit_test.png" width="600">
+  <img src="/images/zap/unit_test.png" width="600">
 
 #### Code Coverage
 
@@ -217,13 +217,13 @@ Code coverage is a metric that can help you understand how much of your source i
 
 To run and generate the code coverage report, run `make coverage`. You will have re-run this command everytime you make changes to your unit test suite.
 
-  <img src="./make_coverage.png" width="600">
+  <img src="/images/zap/make_coverage.png" width="600">
 
 To view the code coverage report, open `htmlcov/index.html` and it will give a summary of how much code was covered from the unit tests. Click on a specific file from the report to get a detailed view of which lines were covered and not.
 
 The green lines indicate that the unit tests hit these lines, where as the red lines mean the opposite. For this example, we can see that the else case and the exception case on `delete_item` was not tested in the `db.py` file:
 
-  <img src="./coverage_eg.png" width="600">
+  <img src="/images/zap/coverage_eg.png" width="600">
 
 ### Setting Environment Variables in Chalice
 
@@ -235,15 +235,15 @@ Currently, our local backend is configured to utilize AWS services on a developm
 
 First, navigate to **AWS Systems Manager**. Then, navigate to **Parameter Store** on the sidebar under Application Management:
 
-<img src="./paramstore_sidebar.png" width="300">
+<img src="/images/zap/paramstore_sidebar.png" width="300">
 
 Then, click **Create parameter** to create an environment variable:
 
-<img src="./paramstore_create.png" width="500">
+<img src="/images/zap/paramstore_create.png" width="500">
 
 Fill out all the necessary details for your environment variable (try your best to keep the name formatting relevant and consistent):
 
-<img src="./paramstore_details.png" width="500">
+<img src="/images/zap/paramstore_details.png" width="500">
 
 Click **Create parameter**.
 

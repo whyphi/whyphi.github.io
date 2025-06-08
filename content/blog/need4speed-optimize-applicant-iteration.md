@@ -65,7 +65,7 @@ However, when reviewing the second clip, we see that only **one** API call (taki
 
 <figure>
   <video width="600" controls>
-    <source src="../assets/old-approach.mov" type="video/mp4">
+    <source src="/videos/blog/old-approach.mov" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <figcaption>Old iteration approach</figcaption>
@@ -75,7 +75,7 @@ However, when reviewing the second clip, we see that only **one** API call (taki
 
 <figure>
   <video width="600" controls>
-    <source src="../assets/new-approach.mov" type="video/mp4">
+    <source src="/videos/blog/new-approach.mov" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <figcaption>New iteration approach</figcaption>
