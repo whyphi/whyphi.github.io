@@ -1,8 +1,8 @@
 ---
 title: Setup
 type: docs
-next: docs/zap/listings
-prev: docs/zap/
+next: onboarding/zap/development
+prev: onboarding/zap
 weight: 1
 ---
 

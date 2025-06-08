@@ -8,42 +8,13 @@ sidebar:
   open: true
 ---
 
-
-
-### Local Development
-
-To turn on the virtual environment using `pipenv`:
-
-```bash
-pipenv shell
-```
-
-To install all necessary dependencies within `pipenv` from our repo:
-
-```bash
-pipenv install
-```
-
-To install any additional dependencies within `pipenv`:
-
-```bash
-pipenv install {dependency name}
-```
-
-To enable local server for Chalice:
-
-```bash
-chalice local
-```
-
-### Exploring & Testing API Endpoints: Tools & Tips
-
-Calling APIs efficiently is essential for developers. While cURL requests are powerful, there are user-friendly alternatives:
-
-1. [Postman](https://www.postman.com/downloads/?)
-2. [HTTPie](https://httpie.io/desktop)
-
-Choose a tool that suits your comfort level and workflow. Both Postman and HTTPie streamline API testing and development tasks.
+<!-- onboarding/zap/
+├── setup.md                 # Covers Python, AWS CLI, Docker/Supabase
+├── development.md           # Covers pipenv, chalice, tools
+├── structure.md             # Describes chalicelib/api, services, etc.
+├── testing.md               # Pytest, code coverage, folder layout
+├── env-vars.md              # AWS Param Store + Chalice policy setup
+└── index.md                 # Table of contents with links to above -->
 
 ### Directory Structure
 
