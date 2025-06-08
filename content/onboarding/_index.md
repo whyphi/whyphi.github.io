@@ -27,33 +27,90 @@ If the keys are the same, proceed to share both the AWS Access Key and Secret Ke
 {{% /details %}}
 
 This is how your `aws configure` should look like:
-``` {filename="aws configure"}
 
-
+```{filename="aws configure"}
 AWS Access Key ID [********************]: {AWS Access Key}
 AWS Secret Access Key [********************]: {AWS Secret Access Key}
 Default region name [us-east-1]: us-east-1
 Default output format [json]: json
 ```
 
+### Setting up - Supabase
+
+As of `dev/v4.0`, Zap will run entirely on Supabase (instead of DynamoDB and MongoDB). Since we have 3 databases total (`local` docker, `staging`, and `prod`), you must complete the following steps in order to develop locally.
+
+{{% details title="What is Docker?" closed="true" %}}
+
+Docker is an industry-standard platform used to build, ship, and run applications using [containerization](https://en.wikipedia.org/wiki/Containerization_(computing)). Supabase handles almost all of the complexities on our behalf, but if you want to learn more, I'd strongly suggest taking a look at Docker's [docs and tutorials](https://www.docker.com/trainings/).
+
+{{% /details %}}
+
+1. Install [Docker Desktop](https://docs.docker.com/desktop/setup/install/mac-install/) (be sure to select the correct machine you are working on)
+2. Install [Supabase CLI](https://supabase.com/docs/guides/local-development?queryGroups=package-manager&package-manager=brew) **NOTE:** Do not run the `supabase init` and `supabase start` commands (Supabase is already initialized inside of `zap`)
+3. Navigate to the `zap` directory
+4. Run `supabase start` to spin up the database
+
+After this command, you should see output that looks like this (if not, you can always run `supabase status` to obtain info about the database).
+
+```shell
+Started supabase local development setup.
+
+         API URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     GraphQL URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  S3 Storage URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          DB URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      Studio URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    Inbucket URL: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      JWT secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        anon key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+service_role key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   S3 Access Key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   S3 Secret Key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+       S3 Region: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Before you move on, copy and paste your `API URL` and `anon key` from above into a file called `zap/.env.local` (**NOTE:** This file must be in the root of the `zap` directory, and it should *not* be checked into source control).
+
+```.env {filename="zap/.env.local"}
+SUPABASE_URL=<API URL>
+SUPABASE_KEY=<anon key>
+```
+
+You can now proceed to running the backend using the steps below. Be sure to run `supabase stop` when your done running the backend to safely shut down the database.
+
+{{% details title="Do I need to run `supabase stop`?" closed="true" %}}
+
+The safest way to shut down the database is by running `supabase stop`. However, you can get away with simply quitting Docker Desktop to save time. This will also prevent you from having to run `supabase start` every time you want to run `zap` (nonetheless it *is* considered better practice to run `supabase start/stop` to ensure the databse is health/uncorrupted).
+
+If you do chose the "quitting Docker Desktop" approach, just make sure you fully quit the application (see screenshot below) or your CPU will hate you 😡.
+
+<img src="./quit_docker_desktop.png" width="300">
+
+
+{{% /details %}}
+
 ### Local Development
 
 To turn on the virtual environment using `pipenv`:
+
 ```bash
 pipenv shell
 ```
 
 To install all necessary dependencies within `pipenv` from our repo:
+
 ```bash
 pipenv install
 ```
 
 To install any additional dependencies within `pipenv`:
+
 ```bash
 pipenv install {dependency name}
 ```
 
 To enable local server for Chalice:
+
 ```bash
 chalice local
 ```
@@ -80,10 +137,10 @@ Within the `chalicelib` directory, many directories exist. Let's now see the pur
 This is where all API endpoints are created in our backend application. We leverage [blueprints](https://aws.github.io/chalice/topics/blueprints.html) to organize our application into logical components.
 
 To create your own blueprint and API endpoints, create a new file in api, intialize a new blueprint object, and create your endpoints:
-  <img src="./new_api.png" width="600">
+<img src="./new_api.png" width="600">
 
 To ensure that your API gets registered to the chalice application, go to `app.py`, import the blueprint and register it on `app` object:
-  <img src="./register_api.png" width="600">
+<img src="./register_api.png" width="600">
 
 #### `chalicelib/models`
 
@@ -94,7 +151,7 @@ If there is a need to create new data types for new features, initialize a new m
 #### `chalicelib/services`
 
 For Zap, we attempt to use a layered architecture. The general schema of layers on a backend application is shown below:
-  <img src="./layer_schema.jpeg" width="450">
+<img src="./layer_schema.jpeg" width="450">
 
 The `services` directory acts as the service layer for Whyphi, in which it contains business logic and handles data manipulations. "Generally services contain information that is related to their domain.
 
@@ -103,6 +160,7 @@ For example, if we have "Mail Service" we expect that sending/receiving emails h
 To learn more: https://dev.to/blindkai/backend-layered-architecture-514h
 
 To create a new service module, create a new file called `{service_name}Service.py` and create a class. Then, create an instance of that class at the bottom of the file, so we can import the instance directly from other files. Here is an example of `ApplicantService.py`:
+
 ```Python
 # chalicelib/services/ApplicantService.py
 
@@ -130,13 +188,13 @@ applicant_service = ApplicantService()
 For Whyphi, we take advantage of a lot of microservices and cloud applications. This means that we need different functionalities for each service to handle the data and/or logic. Thus, for each microservice or application, we would create a file and put them in `modules.`
 
 For example, in Whyphi, we use MongoDB and AWS S3. Each microservice would have its own file with specific functionalities that we would use. For those services, we would create the following files:
+
 - `chalicelib/modules/s3.py`
 - `chalicelib/modules/mongodb.py`
 
 ### Unit Tests
 
 Unit testing is an important part to ensure that changes on our codebase does not break existing features and functionalities. For Zap, we mainly use [`pytest`](https://docs.pytest.org/en/7.4.x/), a Python testing framework.
-
 
 #### Creating Test File
 
@@ -146,7 +204,7 @@ All unit tests are created under the `tests` directory, and each directory and/o
 
 **NOTE: All test files names must have the prefix `test_`**
 
-To create a test, create a function with the prefix name `test_`, and proceed with unit testing. 
+To create a test, create a function with the prefix name `test_`, and proceed with unit testing.
 
 To run the unit test, run the `pytest` command and it will show if you passed or failed any tests.
 
@@ -201,11 +259,13 @@ On Zap's directory, navigate to `.chalice`. Inside it, you will see both `policy
 To get started with Portal, ensure that you have Node.js [downloaded](https://nodejs.org/en/download) and your node version is `v20.x.x`.
 
 Before you start working with this project, make sure you have the following prerequisites in place:
+
 - Node.js: Ensure that you have Node.js installed. If not, you can download it from here. Verify your Node.js version by running the following command:
 
   ```
   node -v
   ```
+
 - Your Node.js version should be at least v20.x.x. If not, consider updating Node.js using the following command:
   ```
   npm install -g n
@@ -235,7 +295,7 @@ Once you created `.env.local`, get the necessary credentials from another member
 
 `.env.local` should look something similar to this:
 
-``` {filename=".env.local"}
+```{filename=".env.local"}
 
 
 NEXT_PUBLIC_API_BASE_URL=http://xxxxxxxxxxxxxxxxx
@@ -249,13 +309,9 @@ NEXTAUTH_URL=http://xxxxxxxxxxxxxxxxx
 ...
 ```
 
-
 ### Directory Structure
 
 WORK IN PROGRESS
-
-
-
 
 ## Tracker
 
@@ -269,13 +325,12 @@ All progress will be located on issues: https://github.com/whyphi/tracker/issues
 
 If you are currently working on a feature, copy and paste the link to your Pull Request next to the checkbox:
 
-  1. Click on `Edit`
-    <img src="./tracker_edit.png" width="450">
+1. Click on `Edit`
+   <img src="./tracker_edit.png" width="450">
 
-  2. Copy and paste your pull request URL next to the checkbox for the corresponding feature
-    <img src="./tracker_pr_link.png" width="450">
+2. Copy and paste your pull request URL next to the checkbox for the corresponding feature
+   <img src="./tracker_pr_link.png" width="450">
 
-  3. Click the `Update comment` button
+3. Click the `Update comment` button
 
-  4. If you complete your feature, mark the checkbox to indicate your feature has been completed.
-  
+4. If you complete your feature, mark the checkbox to indicate your feature has been completed.
