@@ -41,7 +41,7 @@ As of `dev/v4.0`, Zap will run entirely on Supabase (instead of DynamoDB and Mon
 
 {{% details title="What is Docker?" closed="true" %}}
 
-Docker is an industry-standard platform used to build, ship, and run applications using [containerization](https://en.wikipedia.org/wiki/Containerization_(computing)). Supabase handles almost all of the complexities on our behalf, but if you want to learn more, I'd strongly suggest taking a look at Docker's [docs and tutorials](https://www.docker.com/trainings/).
+Docker is an industry-standard platform used to build, ship, and run applications using [containerization](<https://en.wikipedia.org/wiki/Containerization_(computing)>). Supabase handles almost all of the complexities on our behalf, but if you want to learn more, I'd strongly suggest taking a look at Docker's [docs and tutorials](https://www.docker.com/trainings/).
 
 {{% /details %}}
 
@@ -69,7 +69,7 @@ service_role key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
        S3 Region: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Before you move on, copy and paste your `API URL` and `anon key` from above into a file called `zap/.env.local` (**NOTE:** This file must be in the root of the `zap` directory, and it should *not* be checked into source control).
+Before you move on, copy and paste your `API URL` and `anon key` from above into a file called `zap/.env.local` (**NOTE:** This file must be in the root of the `zap` directory, and it should _not_ be checked into source control).
 
 ```.env {filename="zap/.env.local"}
 SUPABASE_URL=<API URL>
@@ -80,12 +80,11 @@ You can now proceed to running the backend using the steps below. Be sure to run
 
 {{% details title="Do I need to run `supabase stop`?" closed="true" %}}
 
-The safest way to shut down the database is by running `supabase stop`. However, you can get away with simply quitting Docker Desktop to save time. This will also prevent you from having to run `supabase start` every time you want to run `zap` (nonetheless it *is* considered better practice to run `supabase start/stop` to ensure the databse is health/uncorrupted).
+The safest way to shut down the database is by running `supabase stop`. However, you can get away with simply quitting Docker Desktop to save time. This will also prevent you from having to run `supabase start` every time you want to run `zap` (nonetheless it _is_ considered better practice to run `supabase start/stop` to ensure the databse is health/uncorrupted).
 
 If you do chose the "quitting Docker Desktop" approach, just make sure you fully quit the application (see screenshot below) or your CPU will hate you 😡.
 
 <img src="./quit_docker_desktop.png" width="300">
-
 
 {{% /details %}}
 
