@@ -3,6 +3,7 @@ title: Zap
 type: docs
 prev: onboarding
 next: onboarding/zap/aws
+weight: 1
 sidebar:
   open: true
 ---
