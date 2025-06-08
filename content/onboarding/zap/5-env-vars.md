@@ -1,9 +1,9 @@
 ---
 title: Environment Variables
 type: docs
-next: onboarding/zap/5-testing
-prev: onboarding/zap/3-structure
-weight: 4
+next: onboarding/zap/6-testing
+prev: onboarding/zap/4-structure
+weight: 5
 ---
 
 Setting up environment variables are a little bit more complicated in Chalice. However, it is crucial to understand and know how to implement them as we work with sensitive credentials from other external services.

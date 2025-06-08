@@ -1,7 +1,7 @@
 ---
 title: Development
 type: docs
-next: onboarding/zap/3-structure
+next: onboarding/zap/3-db-migrations
 prev: onboarding/zap/1-setup
 weight: 2
 ---

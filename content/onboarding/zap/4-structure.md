@@ -1,9 +1,9 @@
 ---
 title: Structure
 type: docs
-next: onboarding/zap/4-env-vars
-prev: onboarding/zap/2-development
-weight: 3
+next: onboarding/zap/5-env-vars
+prev: onboarding/zap/3-db-migrations
+weight: 4
 ---
 
 In AWS Chalice, the application itself is served under the root directory in a file called `app.py`. All other subdirectories and modules need to be created under a directory called `chalicelib`.

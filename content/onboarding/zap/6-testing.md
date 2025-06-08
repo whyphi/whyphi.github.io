@@ -1,8 +1,9 @@
 ---
 title: Testing
 type: docs
+next: onboarding/portal
 prev: onboarding/zap/4-env-vars
-weight: 5
+weight: 6
 ---
 
 ### Unit Tests
