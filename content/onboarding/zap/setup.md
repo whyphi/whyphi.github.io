@@ -30,14 +30,16 @@ Verify installation:
 pipenv --version
 ```
 
----
-
 ## AWS CLI & Credentials
 
 Zap uses multiple AWS services. Before interacting with them:
+{{% steps %}}
 
-1. [Install AWS CLI](https://aws.amazon.com/cli/)
-2. Configure AWS CLI:
+### Installation
+
+Follow directions at [AWS CLI](https://aws.amazon.com/cli/)
+
+### Configure AWS CLI
 
 ```bash
 aws configure
@@ -68,7 +70,7 @@ Default region name [us-east-1]: us-east-1
 Default output format [json]: json
 ```
 
----
+{{% /steps %}}
 
 ## Supabase
 
@@ -109,6 +111,7 @@ Started supabase local development setup.
         anon key: ...
 service_role key: ...
 ```
+
 ### Create `.env.local`:
 
 Copy your `API URL` and `anon key` from above into the following file.
@@ -142,68 +145,3 @@ Just make sure to **fully quit** Docker Desktop or your CPU will want to kill yo
 {{% /details %}}
 
 {{% /steps %}}
-
-<!--
-1. Install [Docker Desktop](https://docs.docker.com/desktop/)
-2. Install [Supabase CLI](https://supabase.com/docs/guides/local-development#install-the-cli)
-
-**Important:** Do _not_ run `supabase init`. Supabase is already initialized in the `zap` repo.
-
-3. Navigate to the `zap` directory:
-
-```bash
-cd zap
-```
-
-4. Start the Supabase local stack:
-
-```bash
-supabase start
-```
-
-If successful, you’ll see URLs and keys printed to your terminal:
-
-```
-Started supabase local development setup.
-
-         API URL: http://127.0.0.1:54321
-     GraphQL URL: http://127.0.0.1:54321/graphql/v1
-  S3 Storage URL: http://127.0.0.1:54321/storage/v1/s3
-          DB URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
-      Studio URL: http://127.0.0.1:54323
-      JWT secret: ...
-        anon key: ...
-service_role key: ...
-```
-
-5. Copy your `API URL` and `anon key` and create a `.env.local` file inside the `zap` directory:
-
-```env
-# zap/.env.local
-SUPABASE_URL=<API URL>
-SUPABASE_KEY=<anon key>
-```
-
-{{< callout type="warning" >}}
-This file must NOT be committed to source control.
-{{< /callout >}}
-
-6. When you're done, shut down the local Supabase services:
-
-```bash
-supabase stop
-```
-
-{{% details title="Do I really need to run `supabase stop`?" closed="true" %}}
-
-Technically, you can quit Docker Desktop directly to stop the services, but running `supabase stop` is safer to avoid corruption or orphaned containers.
-
-Just make sure to **fully quit** Docker Desktop or your CPU will want to kill you 😡.
-
-<img src="/images/zap/quit_docker_desktop.png" width="300">
-
-{{% /details %}}
-
- -->
-
----
