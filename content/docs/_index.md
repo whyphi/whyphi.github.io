@@ -1,6 +1,6 @@
 ---
 title: Documentation
-next: Zap
+next: docs/zap
 ---
 
 This page contains all the necessary documetation for API endpoints utilized by Zap and Portal.

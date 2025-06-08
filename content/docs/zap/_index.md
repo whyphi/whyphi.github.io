@@ -6,4 +6,3 @@ next: docs/zap/applicant
 sidebar:
   open: true
 ---
-
