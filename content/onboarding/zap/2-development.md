@@ -1,8 +1,8 @@
 ---
 title: Development
 type: docs
-next: onboarding/zap/setup
-prev: onboarding/zap
+next: onboarding/zap/3-structure
+prev: onboarding/zap/1-setup
 weight: 2
 ---
 
