@@ -14,10 +14,10 @@ To turn on the virtual environment using `pipenv`:
 pipenv shell
 ```
 
-To install all necessary dependencies within `pipenv` from our repo:
+To install all necessary dependencies within `pipenv` from our repo (be sure to use `--dev` flag to install dev related packages such as `pytest`):
 
 ```bash
-pipenv install
+pipenv install --dev
 ```
 
 To install any additional dependencies within `pipenv`:
