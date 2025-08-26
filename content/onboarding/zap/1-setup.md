@@ -6,7 +6,7 @@ prev: onboarding/zap
 weight: 1
 ---
 
-This guide walks you through installing Python and Pipenv, configuring AWS credentials, and setting up Supabase locally with Docker.
+This guide walks you through installing **Python** and **Pipenv**, configuring **AWS credentials**, and setting up **Supabase** and **MinIO** locally with **Docker**.
 
 ## Python (and Pipenv)
 
@@ -33,6 +33,7 @@ pipenv --version
 ## AWS CLI & Credentials
 
 Zap uses multiple AWS services. Before interacting with them:
+
 {{% steps %}}
 
 ### Installation
@@ -78,7 +79,7 @@ As of `dev/v4.0`, Zap uses [Supabase](https://supabase.com/) for its database, r
 
 {{% steps %}}
 
-### Docker Desktop and Supabase CLI
+### Installation
 
 - Install [Docker Desktop](https://docs.docker.com/desktop/)
 - Install [Supabase CLI](https://supabase.com/docs/guides/local-development#install-the-cli)
@@ -143,5 +144,79 @@ Just make sure to **fully quit** Docker Desktop or your CPU will want to kill yo
 <img src="/images/zap/quit_docker_desktop.png" width="300">
 
 {{% /details %}}
+
+{{% /steps %}}
+
+## MinIO
+
+Following the `dev/v4.0` release with our **local-first** development strategy, all development images are now stored in a local S3 [emulator](https://en.wikipedia.org/wiki/Emulator) called [MinIO](https://www.min.io/). Fortunately, it is fairly  straightforward and only requires a few commands.
+
+{{% steps %}}
+
+### Installation
+
+- Install [Docker Desktop](https://docs.docker.com/desktop/)
+- See [Docker Compose](https://docs.docker.com/compose/) documentation for more information
+- Install [MinIO Client (mc)](https://github.com/minio/mc?tab=readme-ov-file#minio-client-quickstart-guide) (if using Mac, I'd suggest installing with [Homebrew](https://brew.sh/) -> [reference](https://github.com/minio/mc?tab=readme-ov-file#homebrew))
+
+### Navigate to `zap` directory
+
+```bash
+cd zap
+```
+
+### Start MinIO
+
+```bash
+docker compose -d     # -d is used to run in "detached" mode without taking over the terminal
+```
+
+If successfuly, you'll see a message that looks like the following:
+
+```bash
+~ docker compose up -d
+[+] Running 2/2
+ ✔ Network zap_default  Created                                                                                           0.0s 
+ ✔ Container minio      Started 
+```
+
+### Add MinIO server to `mc`
+
+This command only needs to be run once when using MinIO for the WhyPhi.
+
+```bash
+mc alias set local http://localhost:9000 minio minio123
+```
+
+### Create Bucket and Add Permissions
+
+Run these commands to create the bucket and allow public access to the bucket
+
+```bash
+mc mb local/whyphi-zap                        # create bucket
+mc anonymous set download local/whyphi-zap    # set permissions
+```
+
+### View MinIO Data
+
+To view your locally emulated data, MinIO offers a dashboard that can be found here:
+
+[http://localhost:9001](http://localhost:9001)
+
+Use the `MINIO_ROOT_USER` and `MINIO_ROOT_PASSWORD` found in `zap/docker-compose.yml` to login.
+
+### Stop MinIO 
+
+To stop MinIO simply run:
+
+```bash
+docker compose down
+```
+
+If you also want to remove all locally stored S3 data:
+
+```bash
+docker compose down -v    # CAUTION: this command removes all local S3 data
+```
 
 {{% /steps %}}
