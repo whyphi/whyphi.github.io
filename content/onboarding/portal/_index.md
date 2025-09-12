@@ -50,8 +50,6 @@ Once you created `.env.local`, get the necessary credentials from another member
 `.env.local` should look something similar to this:
 
 ```{filename=".env.local"}
-
-
 NEXT_PUBLIC_API_BASE_URL=http://xxxxxxxxxxxxxxxxx
 GOOGLE_CLIENT_ID=xxxxxxxxxxxxxxxxx
 GOOGLE_CLIENT_SECRET=xxxxxxxxxxxxxxxxx
@@ -60,7 +58,9 @@ MONGO_PASSWORD=xxxxxxxxxxxxxxxxx
 NEXTAUTH_SECRET=xxxxxxxxxxxxxxxxx
 NEXTAUTH_URL=http://xxxxxxxxxxxxxxxxx
 
-...
+# Obtain these from running `supabase status`
+SUPABASE_URL=http://localhost:54321
+SUPABASE_KEY=xxxxxxxxxxxxxxxxx
 ```
 
 ### Directory Structure
