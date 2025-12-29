@@ -18,24 +18,27 @@ markup:
 
 menu:
   main:
-    - name: Docs
-      pageRef: /docs
-      weight: 1
-    - name: Workflow
-      pageRef: /workflow
-      weight: 2
     - name: Onboarding
       pageRef: "/onboarding"
+      weight: 1
+    - name: Usage
+      pageRef: "/usage"
+      weight: 2
+    - name: Docs
+      pageRef: /docs
       weight: 3
+    - name: Workflow
+      pageRef: /workflow
+      weight: 4
     - name: Blog
       pageRef: "/blog"
-      weight: 4
-    - name: Search
       weight: 5
+    - name: Search
+      weight: 6
       params:
         type: search
     - name: GitHub
-      weight: 6
+      weight: 7
       url: "https://github.com/whyphi"
       params:
         icon: github
