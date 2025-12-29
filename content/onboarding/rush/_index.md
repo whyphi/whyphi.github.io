@@ -1,8 +1,8 @@
 ---
 title: Rush
 type: docs
-# prev: onboarding
-# next: onboarding/zap/aws
+prev: onboarding/portal
+next: onboarding/vault-web
 weight: 3
 sidebar:
   open: true

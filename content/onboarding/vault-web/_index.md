@@ -1,8 +1,8 @@
 ---
 title: Vault-Web
 type: docs
-# prev: onboarding
-# next: onboarding/zap/aws
+prev: onboarding/rush
+next: onboarding/tracker
 weight: 4
 sidebar:
   open: true

@@ -1,8 +1,8 @@
 ---
 title: Tracker
 type: docs
-# prev: onboarding
-# next: onboarding/zap/aws
+prev: onboarding/vault-web
+next: usage
 weight: 5
 sidebar:
   open: true

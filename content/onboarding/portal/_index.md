@@ -1,8 +1,8 @@
 ---
 title: Portal
 type: docs
-# prev: onboarding
-# next: onboarding/zap/aws
+prev: onboarding/zap/6-testing
+next: onboarding/rush
 weight: 2
 sidebar:
   open: true
