@@ -79,7 +79,16 @@ supabase db reset
 ```
 
 {{< callout type="warning" >}}
-This will destroy your local data and reapply all migrations.
+This will destroy your local data and reapply all migrations.{{< /callout >}}
+
+{{< callout type="info" >}}
+Alternatively, to apply unapplied migrations **without destroying** local data, run:
+
+```bash
+supabase start
+supabase migration up
+```
+
 {{< /callout >}}
 
 ### Commit your schema and migration files
